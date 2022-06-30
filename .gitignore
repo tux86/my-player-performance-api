@@ -27,10 +27,6 @@ dist
 # Serverless directories
 .serverless/
 
-
-# esbuild directories
-.esbuild
-
 # OS
 .DS_Store
 
