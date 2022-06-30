@@ -1,4 +1,4 @@
-export class DatasetFetchError extends Error {
+export class DatasetClientFetchError extends Error {
   constructor(message = "Unhandled fetch error") {
     super();
     this.message = message;

@@ -7,14 +7,14 @@ import isNumeric = validator.isNumeric;
 export class PlayerService {
   constructor(readonly dataSetClient: DataSetClient) {}
 
-  async getAllPlayers(): Promise<Player[]> {
+  async getAllPlayers(): Promise<Player[] | never> {
     const data = await this.dataSetClient.fetch();
     const { players } = data;
     // return players sorted by id (direction=ASC)
     return players.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
 
-  public async getPlayerById(id: string): Promise<Player | undefined> {
+  public async getPlayerById(id: string): Promise<Player | undefined | never> {
     if (!id || !isNumeric(id, { no_symbols: true })) {
       throw new HttpBadRequestError(`Invalid "Id" parameter`);
     }

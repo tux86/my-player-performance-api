@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { plainToInstance } from "class-transformer";
 import { Player } from "../entities/player.entity";
-import { DatasetFetchError } from "../exceptions/dataset-fetch.error";
+import { DatasetClientFetchError } from "../exceptions/dataset-client-fetch.error";
 import validator from "validator";
 
 class DataSetPayload {
@@ -30,7 +30,7 @@ export class DataSetClient {
       const response = await fetch(this.sourceUrl);
 
       if (!response.ok) {
-        throw new DatasetFetchError(
+        throw new DatasetClientFetchError(
           `fetch failed. api returned ${response.status} status code`
         );
       }
@@ -40,14 +40,14 @@ export class DataSetClient {
       //TODO: behaviour will be more safe with a JSON schema validation.
       return plainToInstance<DataSetPayload, any>(DataSetPayload, raw);
     } catch (error) {
-      if (error instanceof DatasetFetchError) {
+      if (error instanceof DatasetClientFetchError) {
         console.error("*** ERROR ***", error.message);
         throw error;
       } else {
         // unhandled error details should be logged for diagnosis
         console.error("*** ERROR ***", [error.message, error.stack].join("\n"));
         // error may be thrown and displayed to public users
-        throw new DatasetFetchError();
+        throw new DatasetClientFetchError();
       }
     }
   }
