@@ -1,4 +1,4 @@
-export class CountryEntity {
+export class Country {
   code: string;
   picture: string;
 }

@@ -22,7 +22,7 @@ export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
     return formatJSONResponse(player);
   } catch (error) {
     if (error instanceof BaseHttpError) {
-      return errorToJSONResponse(error as Error);
+      return errorToJSONResponse(error);
     } else {
       // internal error details should be logged for diagnosis
       console.error("*** ERROR ***", [error.message, error.stack].join("\n"));

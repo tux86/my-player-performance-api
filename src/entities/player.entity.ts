@@ -1,5 +1,5 @@
 import { Gender } from "../enums/gender.enum";
-import { CountryEntity } from "./country.entity";
+import { Country } from "../types/country.type";
 
 export class Player {
   id: number;
@@ -7,7 +7,7 @@ export class Player {
   lastname: string;
   shortname: string;
   sex: Gender;
-  country: CountryEntity;
+  country: Country;
   picture: string;
   data: {
     rank: number;
