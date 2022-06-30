@@ -61,20 +61,20 @@ custom:
 
 functions:
   # get all players api
-  allPlayers:
+  listPlayers:
     handler: dist/handlers/list-players.handler
-    name: ${self:service}-all-players
-    description: get all players stats
+    name: ${self:service}-list-players
+    description: list players stats
     events:
       - httpApi:
           method: get
           path: /players
 
   # get player by ID api
-  playerById:
+  getPlayerById:
     handler: dist/handlers/get-player-by-id.handler
-    name: ${self:service}-all-players
-    description: get all players stats
+    name: ${self:service}-get-player-by-ud
+    description: get a player stats by id
     events:
       - httpApi:
           method: get

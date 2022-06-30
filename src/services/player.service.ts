@@ -1,5 +1,8 @@
 import { Player } from "../entities/player.entity";
 import { DataSetClient } from "../clients/dataset.client";
+import { HttpBadRequestError } from "../exceptions/http/http-bad-request-error";
+import validator from "validator";
+import isNumeric = validator.isNumeric;
 
 export class PlayerService {
   constructor(readonly dataSetClient: DataSetClient) {}
@@ -7,12 +10,16 @@ export class PlayerService {
   async getAllPlayers(): Promise<Player[]> {
     const data = await this.dataSetClient.fetch();
     const { players } = data;
-    // return players sorted by id
+    // return players sorted by id (direction=ASC)
     return players.sort((a, b) => (a.id > b.id ? 1 : -1));
   }
 
-  public async getPlayerById(id: number): Promise<Player | undefined> {
+  public async getPlayerById(id: string): Promise<Player | undefined> {
+    if (!id || !isNumeric(id, { no_symbols: true })) {
+      throw new HttpBadRequestError(`Invalid "Id" parameter`);
+    }
+
     const players = await this.getAllPlayers();
-    return players.find((player) => player.id === id);
+    return players.find((player) => player.id === Number(id));
   }
 }

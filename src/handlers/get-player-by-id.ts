@@ -1,11 +1,7 @@
 import { APIGatewayEvent, ProxyHandler } from "aws-lambda";
-
 import { errorToJSONResponse, formatJSONResponse } from "../libs/api-gateway";
-import validator from "validator";
-import isNumeric = validator.isNumeric;
 import { HttpNotFoundError } from "../exceptions/http/http-not-found-error";
 import { BaseHttpError } from "../exceptions/http/base-http-error";
-import { HttpBadRequestError } from "../exceptions/http/http-bad-request-error";
 import { HttpInternalServerError } from "../exceptions/http/http-internal-server-error";
 import { container } from "../bootstrap";
 const { playerService } = container;
@@ -17,11 +13,7 @@ export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
   try {
     const { id } = event.pathParameters;
 
-    if (!id || !isNumeric(id)) {
-      throw new HttpBadRequestError(`Invalid "Id" path parameter`);
-    }
-
-    const player = await playerService.getPlayerById(Number(id));
+    const player = await playerService.getPlayerById(id);
 
     if (!player) {
       throw new HttpNotFoundError("player not found");
