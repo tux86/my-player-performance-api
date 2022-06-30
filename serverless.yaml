@@ -1,0 +1,81 @@
+service: my-player-performance-api
+frameworkVersion: '3'
+useDotenv: true
+
+plugins:
+  - serverless-deployment-bucket
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  region: ${opt:region, 'eu-west-1'}
+  profile: ${env:AWS_PROFILE}
+  deploymentMethod: direct
+  runtime: nodejs14.x
+  architecture: arm64
+  lambdaHashingVersion: '20201221'
+  memorySize: 1024
+  timeout: 28 # API Gateway timeout
+  versionFunctions: false
+  logRetentionInDays: 14
+  # Resources Tagging Section
+  stackTags:
+    Project: my-player-performance
+    Owner: FFT
+    Name: ${self:service}-${sls:stage}
+    Stage: ${sls:stage}
+    Tier: application
+    ManagedBy: serverless
+
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action: '*'
+          Resource: '*'
+
+  deploymentBucket:
+    name: ${self:service}-${sls:stage}-sls-state
+
+  # Lambda Runtime env vars
+  environment:
+    DATASET_URL: ${env:DATASET_URL}
+
+custom:
+  # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PLUGINS CONFIGURATION SECTION &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+  # *** serverless-deployment-bucket config ***
+  deploymentBucket:
+    accelerate: true
+    blockPublicAccess: true
+  # *** serverless-offline config ***
+  serverless-offline:
+    host: 127.0.0.1
+    noPrependStageInUrl: true
+    noAuth: true
+    printOutput: false
+    allowCache: true
+
+
+functions:
+  # get all players api
+  allPlayers:
+    handler: dist/handlers/list-players.handler
+    name: ${self:service}-all-players
+    description: get all players stats
+    events:
+      - httpApi:
+          method: get
+          path: /players
+
+  # get player by ID api
+  playerById:
+    handler: dist/handlers/get-player-by-id.handler
+    name: ${self:service}-all-players
+    description: get all players stats
+    events:
+      - httpApi:
+          method: get
+          path: /players/{id}
