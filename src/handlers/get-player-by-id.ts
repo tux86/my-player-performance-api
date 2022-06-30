@@ -1,8 +1,8 @@
 import { APIGatewayEvent, ProxyHandler } from "aws-lambda";
 import { errorToJSONResponse, formatJSONResponse } from "../libs/api-gateway";
-import { HttpNotFoundError } from "../exceptions/http/http-not-found-error";
-import { BaseHttpError } from "../exceptions/http/base-http-error";
-import { HttpInternalServerError } from "../exceptions/http/http-internal-server-error";
+import { HttpNotFoundError } from "../exceptions/http/http-not-found.error";
+import { BaseHttpError } from "../exceptions/http/base-http.error";
+import { HttpInternalServerError } from "../exceptions/http/http-internal-server.error";
 import { container } from "../bootstrap";
 const { playerService } = container;
 

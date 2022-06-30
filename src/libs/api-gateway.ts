@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { BaseHttpError } from "../exceptions/http/base-http-error";
+import { BaseHttpError } from "../exceptions/http/base-http.error";
 import { APIGatewayProxyResult } from "aws-lambda";
 
 // transform a payload to APIGatewayProxyResult

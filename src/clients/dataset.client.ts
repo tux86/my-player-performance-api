@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 import { plainToInstance } from "class-transformer";
 import { Player } from "../entities/player.entity";
-import { DatasetFetchError } from "../exceptions/dataset-fetch-error";
+import { DatasetFetchError } from "../exceptions/dataset-fetch.error";
 import validator from "validator";
 
 class DataSetPayload {

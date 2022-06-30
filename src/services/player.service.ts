@@ -1,6 +1,6 @@
 import { Player } from "../entities/player.entity";
 import { DataSetClient } from "../clients/dataset.client";
-import { HttpBadRequestError } from "../exceptions/http/http-bad-request-error";
+import { HttpBadRequestError } from "../exceptions/http/http-bad-request.error";
 import validator from "validator";
 import isNumeric = validator.isNumeric;
 

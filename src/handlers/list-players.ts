@@ -3,8 +3,8 @@ import { container } from "../bootstrap";
 const { playerService } = container;
 
 import { errorToJSONResponse, formatJSONResponse } from "../libs/api-gateway";
-import { BaseHttpError } from "../exceptions/http/base-http-error";
-import { HttpInternalServerError } from "../exceptions/http/http-internal-server-error";
+import { BaseHttpError } from "../exceptions/http/base-http.error";
+import { HttpInternalServerError } from "../exceptions/http/http-internal-server.error";
 
 /**
  *  list all players stats lambda handler
