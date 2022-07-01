@@ -2,7 +2,11 @@
 
 Yet another serverless ☁️ API with **Lambda** and **Node.js** using **serverless framework 3**
 
-## Getting started
+
+[architecture](https://user-images.githubusercontent.com/9397970/176889714-cab35599-bbdc-4526-9ab6-d7e248d55320.png)
+
+
+## Getting started!
 
 Make sure **node 14.x** and **yarn** are installed.
 
