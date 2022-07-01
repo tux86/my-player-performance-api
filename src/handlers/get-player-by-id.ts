@@ -8,7 +8,7 @@ import { PlayerService } from "../services/player.service";
 const playerService = container.get(PlayerService);
 
 /**
- *  get a player stats lambda handler
+ *  lambda handler : get a player stats
  */
 export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
   try {

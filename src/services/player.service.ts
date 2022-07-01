@@ -1,5 +1,5 @@
 import { Player } from "../entities/player.entity";
-import { DataSetClient } from "../clients/dataset.client";
+import { DataProviderClient } from "../clients/data-provider.client";
 import { HttpBadRequestError } from "../exceptions/http/http-bad-request.error";
 import validator from "validator";
 import isNumeric = validator.isNumeric;
@@ -7,10 +7,10 @@ import { Service } from "diod";
 
 @Service()
 export class PlayerService {
-  constructor(readonly dataSetClient: DataSetClient) {}
+  constructor(readonly client: DataProviderClient) {}
 
   async getAllPlayers(): Promise<Player[] | never> {
-    const data = await this.dataSetClient.fetch();
+    const data = await this.client.fetchData();
     const { players } = data;
     // return players sorted by id (direction=ASC)
     return players.sort((a, b) => (a.id > b.id ? 1 : -1));

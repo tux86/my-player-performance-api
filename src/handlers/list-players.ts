@@ -7,7 +7,7 @@ import { BaseHttpError } from "../exceptions/http/base-http.error";
 import { HttpInternalServerError } from "../exceptions/http/http-internal-server.error";
 
 /**
- *  list all players stats lambda handler
+ *  lambda handler: list all players stats
  */
 export const handler: ProxyHandler = async () => {
   try {

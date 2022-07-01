@@ -1,5 +1,5 @@
 import { Player } from "../entities/player.entity";
 
-export class DataSetPayload {
+export class DataPayload {
   players: Player[] = [];
 }

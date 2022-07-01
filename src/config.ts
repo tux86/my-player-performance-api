@@ -1,3 +1,6 @@
-export default {
-  dataSetUrl: process.env.DATASET_URL || "",
-};
+import { Service } from "diod";
+
+@Service()
+export class Config {
+  readonly dataSetUrl = process.env.DATA_PROVIDER_URL || "";
+}

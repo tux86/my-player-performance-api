@@ -1,14 +1,17 @@
 import "reflect-metadata";
 import { ContainerBuilder } from "diod";
-import { DataSetClient } from "./clients/dataset.client";
+import { DataProviderClient } from "./clients/data-provider.client";
 import { PlayerService } from "./services/player.service";
+import { Config } from "./config";
 
 console.debug("registering services in the Container ...");
 const builder = new ContainerBuilder();
 
 // services registration
-console.debug("container.register ▶️", DataSetClient.name);
-builder.registerAndUse(DataSetClient);
+console.debug("container.register ▶️", Config.name);
+builder.registerAndUse(Config);
+console.debug("container.register ▶️", DataProviderClient.name);
+builder.registerAndUse(DataProviderClient);
 console.debug("container.register ▶️️", PlayerService.name);
 builder.registerAndUse(PlayerService);
 

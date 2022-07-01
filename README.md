@@ -32,14 +32,14 @@ now open **.env.dev** using a text editor, the content should look like this :
 ```dotenv
 AWS_PROFILE=*********
 AWS_REGION=eu-west-1
-DATASET_URL=*********
+DATA_PROVIDER_URL=*********
 ```
 
 Update the content by setting a value for each the following variables
 
 - **AWS_PROFILE:**  your aws profile name (admin credentials required)
 - **AWS_REGION:**   the aws region (example: eu-west-1)
-- **DATASET_URL:**  the dataset url
+- **DATA_PROVIDER_URL:**  the dataset url
 
 ## Running project locally (offline mode)
 

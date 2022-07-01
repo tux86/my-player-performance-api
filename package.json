@@ -7,7 +7,7 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
-    "test": "mocha -r ts-node/register test/**/*.ts",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn sls offline --stage ${STAGE:=dev}",
     "sls:deploy": "yarn sls deploy --stage ${STAGE:=dev}",

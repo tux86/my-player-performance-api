@@ -1,35 +1,35 @@
 import fetch from "node-fetch";
 import { plainToInstance } from "class-transformer";
-import { DatasetClientFetchError } from "../exceptions/dataset-client-fetch.error";
+import { DataProviderClientError } from "../exceptions/data-provider-client.error";
 import validator from "validator";
-import { DataSetPayload } from "../types/dataset-payload.class";
+import { DataPayload } from "../types/data-payload.class";
 import { Service } from "diod";
-import config from "../config";
-const dataSetUrl = config.dataSetUrl;
+import { Config } from "../config";
+
 /**
- * DataSetClient
+ * DataProviderClient
  * A proxy to provider api
  */
 @Service()
-export class DataSetClient {
+export class DataProviderClient {
   readonly dataSetUrl: string;
-  constructor() {
-    if (!validator.isURL(dataSetUrl)) {
-      throw new Error("DataSetClient:  invalid DataSet URL");
+  constructor(readonly config: Config) {
+    if (!validator.isURL(config.dataSetUrl)) {
+      throw new Error("DataProviderClient:  invalid DataSet URL");
     }
-    this.dataSetUrl = dataSetUrl;
+    this.dataSetUrl = config.dataSetUrl;
   }
 
   /**
    * fetch Players stats data from provider api
-   * @returns DataSetPayload|never
+   * @returns DataPayload|never
    */
-  public async fetch(): Promise<DataSetPayload | never> {
+  public async fetchData(): Promise<DataPayload | never> {
     try {
       const response = await fetch(this.dataSetUrl);
 
       if (!response.ok) {
-        throw new DatasetClientFetchError(
+        throw new DataProviderClientError(
           `fetch failed. api returned ${response.status} status code`
         );
       }
@@ -37,16 +37,16 @@ export class DataSetClient {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const raw = await response.json();
       //TODO: behaviour will be more safe with a JSON schema validation.
-      return plainToInstance<DataSetPayload, any>(DataSetPayload, raw);
+      return plainToInstance<DataPayload, any>(DataPayload, raw);
     } catch (error) {
-      if (error instanceof DatasetClientFetchError) {
+      if (error instanceof DataProviderClientError) {
         console.error("*** ERROR ***", error.message);
         throw error;
       } else {
         // unhandled error details should be logged for diagnosis
         console.error("*** ERROR ***", [error.message, error.stack].join("\n"));
         // error may be thrown and displayed to public users
-        throw new DatasetClientFetchError();
+        throw new DataProviderClientError();
       }
     }
   }
