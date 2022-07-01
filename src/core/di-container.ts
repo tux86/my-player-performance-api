@@ -3,10 +3,10 @@ import { PlayerService } from "../services/player.service";
 import config from "../config";
 
 /**
- * DI Container
+ * DIContainer
  * TODO: simulating DependencyInjection container. Just to keep it simple (NOT FOR REAL PROJECT USE !!)
  */
-export class Container {
+export class DIContainer {
   private _dataSetClient: DataSetClient;
   private _playerService: PlayerService;
 
@@ -24,5 +24,9 @@ export class Container {
       this._playerService = new PlayerService(this.dataSetClient);
     }
     return this._playerService;
+  }
+
+  static registerClass(name: string, ) {
+
   }
 }

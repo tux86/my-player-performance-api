@@ -8,9 +8,9 @@
     "build": "rimraf ./dist && tsc",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "deploy": "yarn sls deploy --stage ${STAGE:=dev}",
-    "undeploy": "yarn sls remove --stage ${STAGE:=dev}",
-    "start": "yarn sls offline --stage ${STAGE:=dev}"
+    "start": "yarn sls offline --stage ${STAGE:=dev}",
+    "sls:deploy": "yarn sls deploy --stage ${STAGE:=dev}",
+    "sls:remove": "yarn sls remove --stage ${STAGE:=dev}"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",

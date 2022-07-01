@@ -1,3 +1,3 @@
-import { Container } from "./core/container";
+import { DIContainer } from "./core/di-container";
 console.debug("==== bootstrapping 🚀 ====");
-export const container = new Container();
+export const container = new DIContainer();

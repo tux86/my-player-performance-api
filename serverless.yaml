@@ -15,7 +15,7 @@ package:
 
 provider:
   name: aws
-  region: ${opt:region, 'eu-west-1'}
+  region: ${opt:region, env:AWS_REGION}
   profile: ${env:AWS_PROFILE}
   deploymentMethod: direct
   runtime: nodejs14.x
@@ -36,6 +36,7 @@ provider:
 
   iam:
     role:
+      # not secure for production use !
       statements:
         - Effect: 'Allow'
           Action: '*'
@@ -61,7 +62,8 @@ custom:
     noAuth: true
     printOutput: false
     allowCache: true
-
+    httpPort: 3000 # change this if conflicts with other applications
+    lambdaPort: 3002
 
 functions:
   # get all players api

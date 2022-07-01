@@ -1,5 +1,5 @@
 import { Gender } from "../enums/gender.enum";
-import { Country } from "../types/country.type";
+import { Country } from "../types/country.class";
 
 export class Player {
   id: number;

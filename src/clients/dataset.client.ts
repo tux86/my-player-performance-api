@@ -1,12 +1,8 @@
 import fetch from "node-fetch";
 import { plainToInstance } from "class-transformer";
-import { Player } from "../entities/player.entity";
 import { DatasetClientFetchError } from "../exceptions/dataset-client-fetch.error";
 import validator from "validator";
-
-class DataSetPayload {
-  players: Player[] = [];
-}
+import { DataSetPayload } from "../types/dataset-payload.class";
 
 /**
  * DataSetClient
