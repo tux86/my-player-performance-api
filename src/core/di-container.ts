@@ -25,8 +25,8 @@ export class DIContainer {
     }
     return this._playerService;
   }
-
-  static registerClass(name: string, ) {
-
-  }
+  //
+  // static registerClass(name: string, ) {
+  //
+  // }
 }

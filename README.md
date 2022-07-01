@@ -23,15 +23,19 @@ $ yarn install
 $ cp .env.template .env.dev
 ```
 
-now, your .env.dev content should look like this : 
+now, your **.env.dev** content should look like this : 
+
+```dotenv
+AWS_PROFILE=*********
+AWS_REGION=eu-west-1
+DATASET_URL=*********
+```
 
 You have to set values of each variable.
 
-```dotenv
-AWS_PROFILE=********* # <-- put here your aws profile name (admin credentials required)
-AWS_REGION=eu-west-1 # <-- you can change chage the region
-DATASET_URL=********* # <-- put the dataset url
-```
+- **AWS_PROFILE:**  put here your aws profile name (admin credentials required)
+- **AWS_REGION:**   you can change the region
+- **DATASET_URL:**  put the dataset url
 
 ## Running project locally (offline mode)
 
