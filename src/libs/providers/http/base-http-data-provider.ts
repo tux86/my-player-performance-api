@@ -1,14 +1,9 @@
 import validator from 'validator';
+import { HttpDataProvider } from './http-data-provider.interface';
 
 /**
- * HttpDataProvider
+ * BaseHttpDataProvider
  */
-export interface HttpDataProvider {
-  readonly dataSourceUrl: string;
-
-  fetchData();
-}
-
 export abstract class BaseHttpDataProvider implements HttpDataProvider {
   readonly dataSourceUrl: string;
 

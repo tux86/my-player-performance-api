@@ -1,11 +1,11 @@
 import { StatusCodes } from 'http-status-codes';
-import { BaseHttpError } from '../exceptions/http/base-http.error';
+import { BaseHttpError } from '../exceptions/http';
 import { APIGatewayProxyResult } from 'aws-lambda';
 
 // transform a payload to APIGatewayProxyResult
 export const formatJSONResponse = (
   payload: any,
-  statusCode: StatusCodes = StatusCodes.OK
+  statusCode: StatusCodes = StatusCodes.OK,
 ): APIGatewayProxyResult => {
   return {
     statusCode,
@@ -15,7 +15,7 @@ export const formatJSONResponse = (
 
 // transform Error to APIGatewayProxyResult
 export const errorToJSONResponse = (
-  error: Error | BaseHttpError
+  error: Error | BaseHttpError,
 ): APIGatewayProxyResult => {
   const statusCode = error instanceof BaseHttpError ? error.statusCode : 500;
   return formatJSONResponse(
@@ -23,6 +23,6 @@ export const errorToJSONResponse = (
       statusCode,
       errorMessage: error.message,
     },
-    statusCode
+    statusCode,
   );
 };

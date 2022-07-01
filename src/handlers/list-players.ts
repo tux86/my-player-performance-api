@@ -1,10 +1,10 @@
 import { ProxyHandler } from 'aws-lambda';
 import { container } from '../bootstrap';
 import { PlayerService } from '../services/player.service';
-const playerService = container.get(PlayerService);
 import { errorToJSONResponse, formatJSONResponse } from '../libs/api-gateway';
-import { BaseHttpError } from '../exceptions/http/base-http.error';
-import { HttpInternalServerError } from '../exceptions/http/http-internal-server.error';
+import { BaseHttpError, HttpInternalServerError } from '../exceptions/http';
+
+const playerService = container.get(PlayerService);
 
 /**
  *  lambda handler: list all players stats

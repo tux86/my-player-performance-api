@@ -1,9 +1,9 @@
 import { Player } from '../entities/player.entity';
 import { StatsDataProvider } from '../providers/stats-data.provider';
-import { HttpBadRequestError } from '../exceptions/http/http-bad-request.error';
+import { HttpBadRequestError } from '../exceptions/http';
 import validator from 'validator';
-import isNumeric = validator.isNumeric;
 import { Service } from 'diod';
+import isNumeric = validator.isNumeric;
 
 @Service()
 export class PlayerService {

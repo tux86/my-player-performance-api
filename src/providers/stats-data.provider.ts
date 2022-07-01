@@ -1,13 +1,10 @@
 import fetch from 'node-fetch';
 import { plainToInstance } from 'class-transformer';
 import { StatsDataProviderError } from '../exceptions/stats-data-provider.error';
-import { DataPayload } from '../types/data-payload.class';
+import { StatsResultDto } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
-import {
-  BaseHttpDataProvider,
-  HttpDataProvider,
-} from '../interfaces/http-data-provider';
+import { BaseHttpDataProvider, HttpDataProvider } from '../libs/providers/http';
 
 /**
  * StatsDataProvider
@@ -26,9 +23,9 @@ export class StatsDataProvider
 
   /**
    * fetch Players stats data from provider api
-   * @returns DataPayload|never
+   * @returns StatsResultDto|never
    */
-  public async fetchData(): Promise<DataPayload | never> {
+  public async fetchData(): Promise<StatsResultDto | never> {
     try {
       const response = await fetch(this.dataSourceUrl);
 
@@ -47,7 +44,7 @@ export class StatsDataProvider
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const raw = await response.json();
       //TODO: behaviour will be more safe with a JSON schema validation.
-      return plainToInstance<DataPayload, any>(DataPayload, raw);
+      return plainToInstance<StatsResultDto, any>(StatsResultDto, raw);
     } catch (error) {
       if (error instanceof StatsDataProviderError) {
         console.error('*** ERROR ***', error.message);
