@@ -33,9 +33,9 @@ DATASET_URL=*********
 
 You have to set values of each variable.
 
-- **AWS_PROFILE:**  put here your aws profile name (admin credentials required)
-- **AWS_REGION:**   you can change the region
-- **DATASET_URL:**  put the dataset url
+- **AWS_PROFILE:**  your aws profile name (admin credentials required)
+- **AWS_REGION:**   the aws region (example: eu-west-1)
+- **DATASET_URL:**  the dataset url
 
 ## Running project locally (offline mode)
 
