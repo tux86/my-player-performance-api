@@ -46,7 +46,7 @@ Update the content by setting a value for each the following variables
 Use the following commands inorder to start the project locally.
 
 ```shell
-$ yarn build  # build
+$ yarn build  # build project
 $ yarn start  # start serverless offline mode
 ```
 
@@ -69,7 +69,7 @@ Once started, you will see a message in the console (as shown below) indicating 
 To make a deployment to AWS cloud, you need to follow the required steps:
 
 ```shell
-$ cp .env.template .env.dev
+$ yarn build  # build project
 $ yarn sls:deploy
 ```
 
