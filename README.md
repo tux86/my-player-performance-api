@@ -1,6 +1,6 @@
 # My Player Performance API
 
-Yet another serverless ☁️ API with **Lambda** and **Node.js** using **serverless framework 3**
+Yet another serverless ☁️ API with **Lambda** and **Node.js**
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/9397970/176889714-cab35599-bbdc-4526-9ab6-d7e248d55320.png" alt="Architecture"/>
