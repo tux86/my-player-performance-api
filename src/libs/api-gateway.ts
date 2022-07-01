@@ -20,7 +20,8 @@ export const errorToJSONResponse = (
   const statusCode = error instanceof BaseHttpError ? error.statusCode : 500;
   return formatJSONResponse(
     {
-      message: error.message,
+      statusCode,
+      errorMessage: error.message,
     },
     statusCode
   );

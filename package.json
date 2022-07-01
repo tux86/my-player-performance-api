@@ -7,6 +7,7 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
+    "test": "mocha -r ts-node/register test/**/*.ts",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn sls offline --stage ${STAGE:=dev}",
     "sls:deploy": "yarn sls deploy --stage ${STAGE:=dev}",
@@ -15,14 +16,18 @@
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/aws-lambda": "^8.10.101",
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
     "@types/node": "^18.0.0",
     "@types/node-fetch": "2.x",
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
+    "chai": "^4.3.6",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-github": "^4.3.6",
     "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.0.0",
     "prettier": "^2.7.1",
     "serverless": "^3.19.0",
     "serverless-deployment-bucket": "^1.6.0",
@@ -36,8 +41,10 @@
     "@types/validator": "^13.7.3",
     "aws-lambda": "^1.0.7",
     "class-transformer": "^0.5.1",
+    "diod": "^1.0.2",
     "http-status-codes": "^2.2.0",
     "node-fetch": "2.x",
+    "reflect-metadata": "^0.1.13",
     "validator": "^13.7.0"
   }
 }

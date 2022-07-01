@@ -3,7 +3,9 @@ import { DataSetClient } from "../clients/dataset.client";
 import { HttpBadRequestError } from "../exceptions/http/http-bad-request.error";
 import validator from "validator";
 import isNumeric = validator.isNumeric;
+import { Service } from "diod";
 
+@Service()
 export class PlayerService {
   constructor(readonly dataSetClient: DataSetClient) {}
 

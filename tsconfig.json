@@ -18,5 +18,7 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true, // makes the @vendia/serverless-express package load properly.
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

@@ -69,7 +69,7 @@ $ cp .env.template .env.dev
 $ yarn sls:deploy
 ```
 
-Verify that the deployment completed successfully. You should see the following in the Log :
+Verify that the deployment completed successfully. You should see the following in the console :
 ```shell
 ✔ Service deployed to stack my-player-performance-api-dev (68s)
 

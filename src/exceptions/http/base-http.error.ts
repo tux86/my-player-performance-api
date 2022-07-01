@@ -5,5 +5,6 @@ export abstract class BaseHttpError extends Error {
   protected constructor(message: string, statusCode: StatusCodes) {
     super();
     this.message = message;
+    this.statusCode = statusCode;
   }
 }

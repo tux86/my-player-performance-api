@@ -1,7 +1,7 @@
 import { ProxyHandler } from "aws-lambda";
 import { container } from "../bootstrap";
-const { playerService } = container;
-
+import { PlayerService } from "../services/player.service";
+const playerService = container.get(PlayerService);
 import { errorToJSONResponse, formatJSONResponse } from "../libs/api-gateway";
 import { BaseHttpError } from "../exceptions/http/base-http.error";
 import { HttpInternalServerError } from "../exceptions/http/http-internal-server.error";

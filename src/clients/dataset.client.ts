@@ -3,18 +3,21 @@ import { plainToInstance } from "class-transformer";
 import { DatasetClientFetchError } from "../exceptions/dataset-client-fetch.error";
 import validator from "validator";
 import { DataSetPayload } from "../types/dataset-payload.class";
-
+import { Service } from "diod";
+import config from "../config";
+const dataSetUrl = config.dataSetUrl;
 /**
  * DataSetClient
  * A proxy to provider api
  */
+@Service()
 export class DataSetClient {
-  constructor(readonly sourceUrl: string) {
-    if (!validator.isURL(sourceUrl)) {
-      throw new Error(
-        "DataSetClient: Invalid constructor argument. invalid URL"
-      );
+  readonly dataSetUrl: string;
+  constructor() {
+    if (!validator.isURL(dataSetUrl)) {
+      throw new Error("DataSetClient:  invalid DataSet URL");
     }
+    this.dataSetUrl = dataSetUrl;
   }
 
   /**
@@ -23,7 +26,7 @@ export class DataSetClient {
    */
   public async fetch(): Promise<DataSetPayload | never> {
     try {
-      const response = await fetch(this.sourceUrl);
+      const response = await fetch(this.dataSetUrl);
 
       if (!response.ok) {
         throw new DatasetClientFetchError(
