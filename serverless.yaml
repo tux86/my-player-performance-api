@@ -47,7 +47,7 @@ provider:
 
   # Lambda Runtime env vars
   environment:
-    DATA_PROVIDER_URL: ${env:DATA_PROVIDER_URL}
+    DATA_SOURCE_URL: ${env:DATA_SOURCE_URL}
 
 custom:
   # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PLUGINS CONFIGURATION SECTION &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&

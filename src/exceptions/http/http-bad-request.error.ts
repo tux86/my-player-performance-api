@@ -1,5 +1,5 @@
-import { ReasonPhrases, StatusCodes } from "http-status-codes";
-import { BaseHttpError } from "./base-http.error";
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import { BaseHttpError } from './base-http.error';
 
 /**
  * HttpBadRequestError

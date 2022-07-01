@@ -1,13 +1,13 @@
-import { Player } from "../entities/player.entity";
-import { DataProviderClient } from "../clients/data-provider.client";
-import { HttpBadRequestError } from "../exceptions/http/http-bad-request.error";
-import validator from "validator";
+import { Player } from '../entities/player.entity';
+import { StatsDataProvider } from '../providers/stats-data.provider';
+import { HttpBadRequestError } from '../exceptions/http/http-bad-request.error';
+import validator from 'validator';
 import isNumeric = validator.isNumeric;
-import { Service } from "diod";
+import { Service } from 'diod';
 
 @Service()
 export class PlayerService {
-  constructor(readonly client: DataProviderClient) {}
+  constructor(readonly client: StatsDataProvider) {}
 
   async getAllPlayers(): Promise<Player[] | never> {
     const data = await this.client.fetchData();
@@ -18,7 +18,7 @@ export class PlayerService {
 
   public async getPlayerById(id: string): Promise<Player | undefined | never> {
     if (!id || !isNumeric(id, { no_symbols: true })) {
-      throw new HttpBadRequestError(`Invalid "Id" parameter`);
+      throw new HttpBadRequestError('Invalid "Id" parameter');
     }
 
     const players = await this.getAllPlayers();

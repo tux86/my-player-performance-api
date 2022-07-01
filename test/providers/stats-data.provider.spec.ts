@@ -1,7 +1,7 @@
 import { formatJSONResponse } from "../../src/libs/api-gateway";
 import { expect } from "chai";
 
-describe("DataProviderClient", () => {
+describe("StatsDataProvider", () => {
   it("test successful fetch", () => {
     // const result = formatJSONResponse({ hello: "hello world" });
     // expect(result).to.be.an("object");

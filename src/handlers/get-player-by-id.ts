@@ -1,10 +1,10 @@
-import { APIGatewayEvent, ProxyHandler } from "aws-lambda";
-import { errorToJSONResponse, formatJSONResponse } from "../libs/api-gateway";
-import { HttpNotFoundError } from "../exceptions/http/http-not-found.error";
-import { BaseHttpError } from "../exceptions/http/base-http.error";
-import { HttpInternalServerError } from "../exceptions/http/http-internal-server.error";
-import { container } from "../bootstrap";
-import { PlayerService } from "../services/player.service";
+import { APIGatewayEvent, ProxyHandler } from 'aws-lambda';
+import { errorToJSONResponse, formatJSONResponse } from '../libs/api-gateway';
+import { HttpNotFoundError } from '../exceptions/http/http-not-found.error';
+import { BaseHttpError } from '../exceptions/http/base-http.error';
+import { HttpInternalServerError } from '../exceptions/http/http-internal-server.error';
+import { container } from '../bootstrap';
+import { PlayerService } from '../services/player.service';
 const playerService = container.get(PlayerService);
 
 /**
@@ -17,7 +17,7 @@ export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
     const player = await playerService.getPlayerById(id);
 
     if (!player) {
-      throw new HttpNotFoundError("player not found");
+      throw new HttpNotFoundError('player not found');
     }
 
     return formatJSONResponse(player);
@@ -26,7 +26,7 @@ export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
       return errorToJSONResponse(error);
     } else {
       // internal error details should be logged for diagnosis
-      console.error("*** ERROR ***", [error.message, error.stack].join("\n"));
+      console.error('*** ERROR ***', [error.message, error.stack].join('\n'));
       return errorToJSONResponse(new HttpInternalServerError());
     }
   }
