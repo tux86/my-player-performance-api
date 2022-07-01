@@ -19,11 +19,15 @@ $ yarn install
 
 ## Creating the environment file
 
+Inside this project root directory, a template environment file **.env.template** is available for you.
+
+Make a copy of this file to **.env.dev** using cp command as below.
+
 ```shell
 $ cp .env.template .env.dev
 ```
 
-now, your **.env.dev** content should look like this : 
+now open **.env.dev** using a text editor, the content should look like this : 
 
 ```dotenv
 AWS_PROFILE=*********
@@ -31,7 +35,7 @@ AWS_REGION=eu-west-1
 DATASET_URL=*********
 ```
 
-You have to set values of each variable.
+Update the content by setting a value for each the following variables
 
 - **AWS_PROFILE:**  your aws profile name (admin credentials required)
 - **AWS_REGION:**   the aws region (example: eu-west-1)
