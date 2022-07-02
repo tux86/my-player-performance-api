@@ -1,19 +1,19 @@
 import { IsNumber, IsPositive } from 'class-validator';
 
 export class Stats {
-  @IsPositive()
+  @IsNumber()
   rank: number;
 
-  @IsPositive()
+  @IsNumber()
   points: number;
 
-  @IsPositive()
+  @IsNumber()
   weight: number;
 
-  @IsPositive()
+  @IsNumber()
   height: number;
 
-  @IsPositive()
+  @IsNumber()
   age: number;
 
   @IsNumber({}, { each: true })

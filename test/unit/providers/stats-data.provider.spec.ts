@@ -8,7 +8,7 @@ import { StatsDataProvider } from '../../../src/providers/stats-data.provider';
 import validDataSet from '../data/dataset-valid.json';
 import invalidDataSet from '../data/dataset-invalid.json';
 import fetchMock from 'fetch-mock';
-import { StatsResultDto } from '../../../src/dtos/stats-result.dto';
+import { StatsResult } from '../../../src/dtos/stats-result.dto';
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
@@ -97,7 +97,7 @@ describe('providers/StatsDataProvider', () => {
     };
     const statsDataProvider = new StatsDataProvider(config);
     const response = await statsDataProvider.fetchData();
-    expect(response).to.be.instanceof(StatsResultDto);
+    expect(response).to.be.instanceof(StatsResult);
     expect(response).to.be.deep.equal({
       players: [
         {

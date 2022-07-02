@@ -1,6 +1,6 @@
 import { Gender } from '../enums/gender.enum';
-import { Country } from './country.entity';
-import { Stats } from './stats.entitiy';
+import { Country } from './country.dto';
+import { Stats } from './stats.dto';
 import { Type } from 'class-transformer';
 import {
   IsEnum,

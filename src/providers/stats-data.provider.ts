@@ -1,6 +1,6 @@
 import { plainToInstance, serialize } from 'class-transformer';
 import { StatsDataProviderError } from '../exceptions/stats-data-provider.error';
-import { StatsResultDto } from '../dtos/stats-result.dto';
+import { StatsResult } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
 import { validate, validateOrReject } from 'class-validator';
@@ -26,9 +26,9 @@ export class StatsDataProvider {
 
   /**
    * fetch Players stats data from provider api
-   * @returns StatsResultDto|never
+   * @returns StatsResult|never
    */
-  public async fetchData(): Promise<StatsResultDto | never> {
+  public async fetchData(): Promise<StatsResult | never> {
     try {
       const response = await fetch(this.dataSourceUrl);
 
@@ -47,8 +47,8 @@ export class StatsDataProvider {
       const raw = await response.json();
 
       // transform json object to StatsResultDto instance
-      const statsResult = plainToInstance<StatsResultDto, any>(
-        StatsResultDto,
+      const statsResult = plainToInstance<StatsResult, any>(
+        StatsResult,
         raw,
       );
 

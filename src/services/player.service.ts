@@ -1,4 +1,4 @@
-import { Player } from '../entities/player.entity';
+import { Player } from '../dtos/player.dto';
 import { StatsDataProvider } from '../providers/stats-data.provider';
 import { HttpBadRequestError } from '../exceptions/http';
 import validator from 'validator';

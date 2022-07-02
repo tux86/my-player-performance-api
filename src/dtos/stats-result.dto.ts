@@ -1,8 +1,8 @@
-import { Player } from '../entities/player.entity';
+import { Player } from './player.dto';
 import { ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
-export class StatsResultDto {
+export class StatsResult {
   @ValidateNested({ each: true })
   @Type(() => Player)
   players: Player[] = [];
