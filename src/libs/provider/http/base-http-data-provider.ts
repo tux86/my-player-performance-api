@@ -13,7 +13,7 @@ export abstract class BaseHttpDataProvider implements HttpDataProvider {
   }
 
   /**
-   * Must be implemented by child class
+   * Must be implemented by the child class
    */
   public abstract fetchData(): Promise<any>;
 

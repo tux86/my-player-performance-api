@@ -2,16 +2,16 @@ service: my-player-performance-api
 frameworkVersion: '3'
 useDotenv: true
 
-plugins:
-  - serverless-deployment-bucket
-  - serverless-offline
-
 package:
   individually: true
   patterns:
     - '!*/**'
     - dist/**
     - node_modules/**
+
+plugins:
+  - serverless-deployment-bucket
+  - serverless-offline
 
 provider:
   name: aws
@@ -50,7 +50,6 @@ provider:
     DATA_SOURCE_URL: ${env:DATA_SOURCE_URL}
 
 custom:
-  # &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& PLUGINS CONFIGURATION SECTION &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
   # *** serverless-deployment-bucket config ***
   deploymentBucket:
     accelerate: true

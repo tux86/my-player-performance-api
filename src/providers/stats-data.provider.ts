@@ -4,7 +4,7 @@ import { StatsDataProviderError } from '../exceptions/stats-data-provider.error'
 import { StatsResultDto } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
-import { BaseHttpDataProvider, HttpDataProvider } from '../libs/providers/http';
+import { BaseHttpDataProvider, HttpDataProvider } from '../libs/provider/http';
 
 /**
  * StatsDataProvider
@@ -43,7 +43,7 @@ export class StatsDataProvider
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const raw = await response.json();
-      //TODO: behaviour will be more safe with a JSON schema validation.
+      //TODO: JSON schema validation can be added here.
       return plainToInstance<StatsResultDto, any>(StatsResultDto, raw);
     } catch (error) {
       if (error instanceof StatsDataProviderError) {

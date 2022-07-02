@@ -1,5 +1,8 @@
 import { APIGatewayEvent, ProxyHandler } from 'aws-lambda';
-import { errorToJSONResponse, formatJSONResponse } from '../libs/api-gateway';
+import {
+  errorToJSONResponse,
+  formatJSONResponse,
+} from '../libs/aws/api-gateway';
 import {
   BaseHttpError,
   HttpInternalServerError,
