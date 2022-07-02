@@ -33,6 +33,7 @@ now open **.env.dev** using a text editor, the content should look like this :
 AWS_PROFILE=*********
 AWS_REGION=eu-west-1
 DATA_SOURCE_URL=*********
+NODE_ENV=development
 ```
 
 Update the content by setting a value for each the following variables
@@ -64,12 +65,17 @@ Once started, you will see a message in the console (as shown below) indicating 
 
 ```
 
-## Deploy service to AWS cloud
-
-To make a deployment to AWS cloud, you need to follow the required steps:
+## Running Tests
 
 ```shell
-$ yarn build  # build project
+$ yarn test
+```
+
+## Deploy service to AWS cloud
+
+To make a deployment to AWS cloud, you need to execute the following command:
+
+```shell
 $ yarn sls:deploy
 ```
 

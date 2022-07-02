@@ -1,14 +1,14 @@
 import 'reflect-metadata';
 import chai, { expect } from 'chai';
 import sinon, { stub } from 'sinon';
-import { Config } from '../../src/config';
+import { Config } from '../../../src/config';
 import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
-import { StatsDataProvider } from '../../src/providers/stats-data.provider';
+import { StatsDataProvider } from '../../../src/providers/stats-data.provider';
 import validDataSet from '../data/dataset-valid.json';
 import invalidDataSet from '../data/dataset-invalid.json';
 import fetchMock from 'fetch-mock';
-import { StatsResultDto } from '../../src/dtos/stats-result.dto';
+import { StatsResultDto } from '../../../src/dtos/stats-result.dto';
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);

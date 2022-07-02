@@ -10,7 +10,7 @@
     "test": "NODE_ENV=test mocha -r ts-node/register \"./**/*.spec.ts\" --recursive ",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "yarn sls offline --stage ${STAGE:=dev}",
-    "sls:deploy": "yarn sls deploy --stage ${STAGE:=dev}",
+    "sls:deploy": "yarn build && yarn sls deploy --stage ${STAGE:=dev}",
     "sls:remove": "yarn sls remove --stage ${STAGE:=dev}"
   },
   "devDependencies": {
