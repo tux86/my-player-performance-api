@@ -1,0 +1,31 @@
+{
+  "players": [
+    {
+      "id": "2",
+      "firstname": "foo",
+      "lastname": "bar",
+      "shortname": "",
+      "sex": "F",
+      "country": {
+        "picture": "https://example.com/countries/fr.jpg",
+        "code": "FR"
+      },
+      "picture": "https://example.com/buddy/hero.jpg",
+      "data": {
+        "rank": 1,
+        "points": 11,
+        "weight": 11,
+        "height": 11,
+        "age": 36,
+        "last": [
+          1,
+          1,
+          1,
+          0,
+          1
+        ]
+      }
+    }
+  ]
+}
+

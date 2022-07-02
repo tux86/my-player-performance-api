@@ -1,11 +1,11 @@
 import {
   formatJSONResponse,
   errorToJSONResponse,
-} from '../../src/libs/aws/api-gateway';
+} from '../../../src/libs/aws/api-gateway';
 import { expect } from 'chai';
-import { HttpNotFoundError } from '../../src/exceptions/http/http-not-found.error';
+import { HttpNotFoundError } from '../../../src/exceptions/http';
 
-describe('API Gateway Utils', () => {
+describe('libs/aws/ApiGateway', () => {
   // formatJSONResponse
   describe('formatJSONResponse', () => {
     it('should return a JSON payload with default status code', () => {

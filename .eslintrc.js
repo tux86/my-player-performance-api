@@ -18,12 +18,12 @@ module.exports = {
     'prettier',
   ],
   rules: {
-    'prettier/prettier': [
-      'error',
-      { singleQuote: true, usePrettierrc: true },
-    ],
+    'prettier/prettier': ['error', { singleQuote: true, usePrettierrc: true }],
     quotes: ['error', 'single', { avoidEscape: true }],
     '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/no-unsafe-argument': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -56,7 +56,10 @@ module.exports = {
     '@typescript-eslint/prefer-as-const': 'error',
     '@typescript-eslint/prefer-namespace-keyword': 'error',
     '@typescript-eslint/restrict-plus-operands': 'error',
-    '@typescript-eslint/restrict-template-expressions': ['error', { allowAny: true }],
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
+      { allowAny: true },
+    ],
     '@typescript-eslint/unbound-method': 'error',
     'require-await': 'off',
     '@typescript-eslint/require-await': 'error',

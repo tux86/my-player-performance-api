@@ -1,10 +1,12 @@
-import fetch from 'node-fetch';
-import { plainToInstance } from 'class-transformer';
+import { plainToInstance, serialize } from 'class-transformer';
 import { StatsDataProviderError } from '../exceptions/stats-data-provider.error';
 import { StatsResultDto } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
+import { validate, validateOrReject } from 'class-validator';
 import validator from 'validator';
+import { logger } from '../libs/logger';
+import { ClassValidationError } from '../exceptions/class-validation-error';
 
 /**
  * StatsDataProvider
@@ -42,14 +44,30 @@ export class StatsDataProvider {
         throw new StatsDataProviderError('invalid content type');
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const raw = await response.json();
-      //TODO: JSON schema validation can be added here.
-      return plainToInstance(StatsResultDto, raw);
+
+      // transform json object to StatsResultDto instance
+      const statsResult = plainToInstance<StatsResultDto, any>(
+        StatsResultDto,
+        raw,
+      );
+
+      // stats result validation
+      const errors = await validate(statsResult);
+      if (errors.length > 0) {
+        throw new ClassValidationError('data validation failed', errors);
+      }
+
+      return statsResult;
     } catch (error) {
-      if (error instanceof StatsDataProviderError) {
+      if (error instanceof ClassValidationError) {
+        // log validation errors details
+        logger.error(error.errors, error.message);
+        throw new StatsDataProviderError(error.message);
+      } else if (error instanceof StatsDataProviderError) {
         throw error;
       } else {
+        // unhanded error with default message
         throw new StatsDataProviderError();
       }
     }

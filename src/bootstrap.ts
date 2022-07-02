@@ -19,6 +19,6 @@ export const initializeDIContainer = (): Container => {
   return builder.build();
 };
 
-// bootstrap
-
+// **** bootstrap ****
+global.fetch = require('node-fetch'); // global fetch declaration required by lambda env
 export const container = initializeDIContainer();

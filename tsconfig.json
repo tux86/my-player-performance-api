@@ -17,7 +17,8 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "esModuleInterop": true, // makes the @vendia/serverless-express package load properly.
+    "resolveJsonModule": true,
+    "esModuleInterop": true // makes the @vendia/serverless-express package load properly.
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
