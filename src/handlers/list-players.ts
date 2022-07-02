@@ -6,6 +6,7 @@ import {
   formatJSONResponse,
 } from '../libs/aws/api-gateway';
 import { BaseHttpError, HttpInternalServerError } from '../exceptions/http';
+import { logger } from '../libs/logger';
 
 const playerService = container.get(PlayerService);
 
@@ -20,8 +21,8 @@ export const handler: ProxyHandler = async () => {
     if (error instanceof BaseHttpError) {
       return errorToJSONResponse(error);
     } else {
-      // internal error details should be logged for diagnosis
-      console.error('*** ERROR ***', [error.message, error.stack].join('\n'));
+      // unhandled error details should be logged for diagnosis
+      logger.error([error.message, error.stack].join('\n'));
       return errorToJSONResponse(new HttpInternalServerError());
     }
   }

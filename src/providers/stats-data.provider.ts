@@ -4,21 +4,22 @@ import { StatsDataProviderError } from '../exceptions/stats-data-provider.error'
 import { StatsResultDto } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
-import { BaseHttpDataProvider, HttpDataProvider } from '../libs/provider/http';
+import validator from 'validator';
 
 /**
  * StatsDataProvider
- * A proxy to provider api
  */
 @Service()
-export class StatsDataProvider
-  extends BaseHttpDataProvider
-  implements HttpDataProvider
-{
+export class StatsDataProvider {
+  readonly dataSourceUrl: string;
+
   private readonly contentType = 'application/json';
 
   constructor(readonly config: Config) {
-    super(config.dataSourceUrl);
+    if (!validator.isURL(config.dataSourceUrl)) {
+      throw new Error('data source URL is not valid');
+    }
+    this.dataSourceUrl = config.dataSourceUrl;
   }
 
   /**
@@ -44,15 +45,11 @@ export class StatsDataProvider
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const raw = await response.json();
       //TODO: JSON schema validation can be added here.
-      return plainToInstance<StatsResultDto, any>(StatsResultDto, raw);
+      return plainToInstance(StatsResultDto, raw);
     } catch (error) {
       if (error instanceof StatsDataProviderError) {
-        console.error('*** ERROR ***', error.message);
         throw error;
       } else {
-        // unhandled error details should be logged for diagnosis
-        console.error('*** ERROR ***', [error.message, error.stack].join('\n'));
-        // error may be thrown and displayed to public users
         throw new StatsDataProviderError();
       }
     }

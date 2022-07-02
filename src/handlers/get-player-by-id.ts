@@ -10,6 +10,7 @@ import {
 } from '../exceptions/http';
 import { container } from '../bootstrap';
 import { PlayerService } from '../services/player.service';
+import { logger } from '../libs/logger';
 
 const playerService = container.get(PlayerService);
 
@@ -31,8 +32,8 @@ export const handler: ProxyHandler = async (event: APIGatewayEvent) => {
     if (error instanceof BaseHttpError) {
       return errorToJSONResponse(error);
     } else {
-      // internal error details should be logged for diagnosis
-      console.error('*** ERROR ***', [error.message, error.stack].join('\n'));
+      // unhandled error details should be logged for diagnosis
+      logger.error([error.message, error.stack].join('\n'));
       return errorToJSONResponse(new HttpInternalServerError());
     }
   }

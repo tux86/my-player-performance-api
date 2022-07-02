@@ -1,20 +1,24 @@
 import 'reflect-metadata';
-import { ContainerBuilder } from 'diod';
+import { Container, ContainerBuilder } from 'diod';
 import { StatsDataProvider } from './providers/stats-data.provider';
 import { PlayerService } from './services/player.service';
 import { Config } from './config';
+import { logger } from './libs/logger';
 
-console.debug('registering services in the Container ...');
-const builder = new ContainerBuilder();
+export const initializeDIContainer = (): Container => {
+  logger.debug('registering services in the Container ...');
+  const builder = new ContainerBuilder();
+  // services registration
+  logger.debug('container.register ▶️ ' + Config.name);
+  builder.registerAndUse(Config);
+  logger.debug('container.register ▶ ️' + StatsDataProvider.name);
+  builder.registerAndUse(StatsDataProvider);
+  logger.debug('container.register ▶️️ ' + PlayerService.name);
+  builder.registerAndUse(PlayerService);
+  logger.debug('container is ready');
+  return builder.build();
+};
 
-// services registration
-console.debug('container.register ▶️', Config.name);
-builder.registerAndUse(Config);
-console.debug('container.register ▶️', StatsDataProvider.name);
-builder.registerAndUse(StatsDataProvider);
-console.debug('container.register ▶️️', PlayerService.name);
-builder.registerAndUse(PlayerService);
+// bootstrap
 
-// build container
-export const container = builder.build();
-console.debug('container is ready');
+export const container = initializeDIContainer();
