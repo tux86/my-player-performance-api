@@ -4,7 +4,7 @@ import sinon, { stub } from 'sinon';
 import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
 import { StatsDataProvider } from '../../../src/providers/stats-data.provider';
-import validDataSet from '../data/dataset-valid.json';
+import validDataSet from '../../data/dataset-valid.json';
 import fetchMock from 'fetch-mock';
 import { PlayerService } from '../../../src/services/player.service';
 
