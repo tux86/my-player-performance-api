@@ -43,7 +43,7 @@ provider:
           Resource: '*'
 
   deploymentBucket:
-    name: ${self:service}-${sls:stage}-sls-state
+    name: ${env:DEPLOYMENT_BUCKET_NAME_PREFIX, self:service}-${sls:stage}-sls-state
 
   # Lambda Runtime env vars
   environment:
