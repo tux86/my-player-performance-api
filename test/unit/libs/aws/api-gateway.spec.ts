@@ -1,6 +1,6 @@
 import {
-  formatJSONResponse,
   errorToJSONResponse,
+  formatJSONResponse,
 } from '../../../../src/libs/aws/api-gateway';
 import { expect } from 'chai';
 import { HttpNotFoundError } from '../../../../src/exceptions/http';

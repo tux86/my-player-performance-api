@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import chai, { expect } from 'chai';
-import sinon, { stub } from 'sinon';
+import sinon from 'sinon';
 import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
 import { StatsDataProvider } from '../../../src/providers/stats-data.provider';
@@ -75,7 +75,7 @@ describe('services/PlayerService', () => {
   });
 
   describe('getPlayerById', () => {
-    it('should failed with invalid parameter', async () => {
+    it('should fail with invalid parameter', async () => {
       await expect(playerService.getPlayerById('abc123')).to.be.rejectedWith(
         'Invalid "Id" parameter',
       );
