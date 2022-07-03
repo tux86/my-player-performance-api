@@ -15,7 +15,7 @@ describe('services/PlayerService', () => {
   let playerService;
   beforeEach(() => {
     const statsDataProvider = new StatsDataProvider({
-      dataSourceUrl: 'https://example.com/',
+      endpointUrl: 'https://example.com/',
     });
     const statsDataProviderMock = sinon.mock(statsDataProvider);
     statsDataProviderMock

@@ -13,15 +13,15 @@ import { ClassValidationError } from '../exceptions/class-validation-error';
  */
 @Service()
 export class StatsDataProvider {
-  readonly dataSourceUrl: string;
+  readonly endpointUrl: string;
 
   private readonly contentType = 'application/json';
 
   constructor(readonly config: Config) {
-    if (!validator.isURL(config.dataSourceUrl)) {
-      throw new Error('data source URL is not valid');
+    if (!validator.isURL(config.endpointUrl)) {
+      throw new Error('endpoint URL is not valid');
     }
-    this.dataSourceUrl = config.dataSourceUrl;
+    this.endpointUrl = config.endpointUrl;
   }
 
   /**
@@ -30,7 +30,7 @@ export class StatsDataProvider {
    */
   public async fetchData(): Promise<StatsResult | never> {
     try {
-      const response = await fetch(this.dataSourceUrl);
+      const response = await fetch(this.endpointUrl);
 
       // validate status code
       if (!response.ok) {

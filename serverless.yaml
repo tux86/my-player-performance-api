@@ -47,7 +47,7 @@ provider:
 
   # Lambda Runtime env vars
   environment:
-    DATA_SOURCE_URL: ${env:DATA_SOURCE_URL}
+    ENDPOINT_URL: ${env:ENDPOINT_URL}
 
 custom:
   # *** serverless-deployment-bucket config ***

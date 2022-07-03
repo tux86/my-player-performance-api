@@ -17,11 +17,11 @@ describe('providers/StatsDataProvider', () => {
 
   it('instantiation should fail with invalid url', () => {
     const config: Config = {
-      dataSourceUrl: 'invalid_url',
+      endpointUrl: 'invalid_url',
     };
 
     expect(() => new StatsDataProvider(config)).to.throw(
-      'data source URL is not valid',
+      'endpoint URL is not valid',
     );
   });
 
@@ -30,7 +30,7 @@ describe('providers/StatsDataProvider', () => {
       status: 404,
     });
     const config: Config = {
-      dataSourceUrl: 'https://example.com/1',
+      endpointUrl: 'https://example.com/1',
     };
     const statsDataProvider = new StatsDataProvider(config);
     await expect(statsDataProvider.fetchData()).to.be.rejectedWith(
@@ -46,7 +46,7 @@ describe('providers/StatsDataProvider', () => {
       },
     });
     const config: Config = {
-      dataSourceUrl: 'https://example.com/2',
+      endpointUrl: 'https://example.com/2',
     };
     const statsDataProvider = new StatsDataProvider(config);
     await expect(statsDataProvider.fetchData()).to.be.rejectedWith(
@@ -63,7 +63,7 @@ describe('providers/StatsDataProvider', () => {
       body: JSON.stringify(invalidDataSet),
     });
     const config: Config = {
-      dataSourceUrl: 'https://example.com/3',
+      endpointUrl: 'https://example.com/3',
     };
     const statsDataProvider = new StatsDataProvider(config);
     await expect(statsDataProvider.fetchData()).to.be.rejectedWith(
@@ -80,7 +80,7 @@ describe('providers/StatsDataProvider', () => {
       body: JSON.stringify(validDataSet),
     });
     const config: Config = {
-      dataSourceUrl: 'https://example.com/4',
+      endpointUrl: 'https://example.com/4',
     };
     const statsDataProvider = new StatsDataProvider(config);
     const response = await statsDataProvider.fetchData();
