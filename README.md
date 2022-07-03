@@ -90,8 +90,8 @@ Verify that the deployment completed successfully. You should see the following 
 ✔ Service deployed to stack my-player-performance-api-dev (32s)
 
 endpoints:
-  GET - https://iml2t1hd9j.execute-api.eu-west-1.amazonaws.com/players
-  GET - https://iml2t1hd9j.execute-api.eu-west-1.amazonaws.com/players/{id}
+  GET - https://abcdef1234.execute-api.eu-west-1.amazonaws.com/players
+  GET - https://abcdef1234.execute-api.eu-west-1.amazonaws.com/players/{id}
 functions:
   listPlayers: my-player-performance-api-listPlayers-dev (6.3 MB)
   getPlayerById: my-player-performance-api-getPlayerById-dev (6.3 MB)
