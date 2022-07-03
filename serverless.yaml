@@ -78,7 +78,7 @@ functions:
   # get player by ID api
   getPlayerById:
     handler: dist/handlers/get-player-by-id.handler
-    name: ${self:service}-get-player-by-ud
+    name: ${self:service}-get-player-by-id
     description: get a player stats by id
     events:
       - httpApi:
