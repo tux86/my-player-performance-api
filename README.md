@@ -42,7 +42,7 @@ Update the content by setting a value for each the following variables
 
 - **AWS_PROFILE:**  your aws profile name (admin credentials required)
 - **AWS_REGION:**   the aws region (example: eu-west-1)
-- **DEPLOYMENT_BUCKET_NAME_PREFIX:** optional (default value = Service name). 
+- **DEPLOYMENT_BUCKET_NAME_PREFIX:** optional (The default value is the service name). 
 
   ` 🚨 IMPORTANT 🚨 : You should set a prefix if the bucket name is not available because bucket name is unique across all AWS accounts`
 
