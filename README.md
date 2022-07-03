@@ -87,15 +87,17 @@ $ yarn sls:deploy
 
 Verify that the deployment completed successfully. You should see the following in the console :
 ```shell
-✔ Service deployed to stack my-player-performance-api-dev (68s)
+✔ Service deployed to stack my-player-performance-api-dev (32s)
 
 endpoints:
-  GET - https://12345abcdef.execute-api.eu-west-1.amazonaws.com/players
-  GET - https://12345abcdef.execute-api.eu-west-1.amazonaws.com/players/{id}
+  GET - https://iml2t1hd9j.execute-api.eu-west-1.amazonaws.com/players
+  GET - https://iml2t1hd9j.execute-api.eu-west-1.amazonaws.com/players/{id}
 functions:
-  listPlayers: my-player-performance-api-list-players (19 MB)
-  getPlayerById: my-player-performance-api-get-player-by-ud (19 MB)
+  listPlayers: my-player-performance-api-listPlayers-dev (6.3 MB)
+  getPlayerById: my-player-performance-api-getPlayerById-dev (6.3 MB)
 
+Monitor all your API routes with Serverless Console: run "serverless --console"
+Done in 36.32s
 ```
 
 ## Remove the deployed service
