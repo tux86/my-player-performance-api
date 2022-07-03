@@ -68,7 +68,7 @@ functions:
   # get all players api
   listPlayers:
     handler: dist/handlers/list-players.handler
-    name: ${self:service}-list-players
+    name: ${self:service}-listPlayers
     description: list players stats
     events:
       - httpApi:
@@ -78,7 +78,7 @@ functions:
   # get player by ID api
   getPlayerById:
     handler: dist/handlers/get-player-by-id.handler
-    name: ${self:service}-get-player-by-id
+    name: ${self:service}-getPlayerById
     description: get a player stats by id
     events:
       - httpApi:
