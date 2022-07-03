@@ -20,7 +20,6 @@ provider:
   deploymentMethod: direct
   runtime: nodejs14.x
   architecture: arm64
-  lambdaHashingVersion: '20201221'
   memorySize: 1024
   timeout: 28 # API Gateway timeout
   versionFunctions: false
@@ -68,7 +67,7 @@ functions:
   # get all players api
   listPlayers:
     handler: dist/handlers/list-players.handler
-    name: ${self:service}-listPlayers
+    name: ${self:service}-listPlayers-${sls:stage}
     description: list players stats
     events:
       - httpApi:
@@ -78,7 +77,7 @@ functions:
   # get player by ID api
   getPlayerById:
     handler: dist/handlers/get-player-by-id.handler
-    name: ${self:service}-getPlayerById
+    name: ${self:service}-getPlayerById-${sls:stage}
     description: get a player stats by id
     events:
       - httpApi:
