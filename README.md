@@ -3,7 +3,7 @@
 Yet another serverless ☁️ API with **Lambda** and **Node.js**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/9397970/176889714-cab35599-bbdc-4526-9ab6-d7e248d55320.png" alt="Architecture"/>
+  <img src="https://user-images.githubusercontent.com/9397970/177034140-a820f6dd-13a1-4c15-9d96-83c9a17082c9.png" alt="Architecture"/>
 </p>
 
 ## Getting started!
