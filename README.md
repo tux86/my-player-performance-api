@@ -1,4 +1,4 @@
-# My Player Performance API
+# My Player's Performance API
 
 Yet another serverless ☁️ API with **Lambda** and **Node.js**
 
