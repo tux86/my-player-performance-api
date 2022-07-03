@@ -1,7 +1,7 @@
 {
   "players": [
     {
-      "id": 2,
+      "id": 20,
       "firstname": "foo",
       "lastname": "bar",
       "shortname": "",
@@ -19,6 +19,32 @@
         "age": 36,
         "last": [
           1,
+          1,
+          1,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "firstname": "foo2",
+      "lastname": "bar2",
+      "shortname": "",
+      "sex": "M",
+      "country": {
+        "picture": "https://example.com/countries/us.jpg",
+        "code": "FR"
+      },
+      "picture": "https://example.com/buddy/hero2.jpg",
+      "data": {
+        "rank": 2,
+        "points": 1,
+        "weight": 1,
+        "height": 1,
+        "age": 30,
+        "last": [
+          0,
           1,
           1,
           0,

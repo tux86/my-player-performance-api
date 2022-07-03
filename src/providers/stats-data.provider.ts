@@ -1,9 +1,9 @@
-import { plainToInstance, serialize } from 'class-transformer';
+import { plainToInstance } from 'class-transformer';
 import { StatsDataProviderError } from '../exceptions/stats-data-provider.error';
 import { StatsResult } from '../dtos/stats-result.dto';
 import { Service } from 'diod';
 import { Config } from '../config';
-import { validate, validateOrReject } from 'class-validator';
+import { validate } from 'class-validator';
 import validator from 'validator';
 import { logger } from '../libs/logger';
 import { ClassValidationError } from '../exceptions/class-validation-error';
@@ -47,10 +47,7 @@ export class StatsDataProvider {
       const raw = await response.json();
 
       // transform json object to StatsResultDto instance
-      const statsResult = plainToInstance<StatsResult, any>(
-        StatsResult,
-        raw,
-      );
+      const statsResult = plainToInstance<StatsResult, any>(StatsResult, raw);
 
       // stats result validation
       const errors = await validate(statsResult);

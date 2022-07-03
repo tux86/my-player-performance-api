@@ -7,6 +7,7 @@ import {
   IsNumber,
   IsString,
   IsUrl,
+  Max,
   Min,
   ValidateNested,
 } from 'class-validator';
@@ -14,6 +15,7 @@ import {
 export class Player {
   @IsNumber()
   @Min(1)
+  // @Max(1)
   id: number;
 
   @IsString()

@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import chai, { expect } from 'chai';
-import sinon, { stub } from 'sinon';
 import { Config } from '../../../src/config';
 import chaiAsPromised from 'chai-as-promised';
 import sinonChai from 'sinon-chai';
@@ -12,18 +11,6 @@ import { StatsResult } from '../../../src/dtos/stats-result.dto';
 
 chai.use(chaiAsPromised);
 chai.use(sinonChai);
-
-function jsonOk(body) {
-  const mockResponse = new window.Response(JSON.stringify(body), {
-    //the fetch API returns a resolved window Response object
-    status: 200,
-    headers: {
-      'Content-type': 'application/json',
-    },
-  });
-
-  return Promise.resolve(mockResponse);
-}
 
 describe('providers/StatsDataProvider', () => {
   after(() => fetchMock.restore());
@@ -97,30 +84,8 @@ describe('providers/StatsDataProvider', () => {
     };
     const statsDataProvider = new StatsDataProvider(config);
     const response = await statsDataProvider.fetchData();
+    // validate plain to class transformation
     expect(response).to.be.instanceof(StatsResult);
-    expect(response).to.be.deep.equal({
-      players: [
-        {
-          id: 2,
-          firstname: 'foo',
-          lastname: 'bar',
-          shortname: '',
-          sex: 'F',
-          country: {
-            picture: 'https://example.com/countries/fr.jpg',
-            code: 'FR',
-          },
-          picture: 'https://example.com/buddy/hero.jpg',
-          data: {
-            rank: 1,
-            points: 11,
-            weight: 11,
-            height: 11,
-            age: 36,
-            last: [1, 1, 1, 0, 1],
-          },
-        },
-      ],
-    });
+    expect(response).to.be.deep.equal(validDataSet);
   });
 });
