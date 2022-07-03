@@ -3,12 +3,12 @@ frameworkVersion: '3'
 useDotenv: true
 
 package:
-  individually: true
+  individually: false
   patterns:
     - '!*/**'
     - dist/**
     - node_modules/**
-
+    - '!node_modules/aws-sdk/**'
 plugins:
   - serverless-deployment-bucket
   - serverless-offline
